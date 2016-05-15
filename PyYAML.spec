@@ -3,7 +3,7 @@
 
 Name:           %{?scl_prefix}PyYAML
 Version:        3.10
-Release:        13%{?dist}
+Release:        14%{?dist}
 Summary:        YAML parser and emitter for Python
 
 Group:          Development/Libraries
@@ -38,6 +38,10 @@ configuration files to object serialization and persistance.
 %prep
 %setup -q -n %{pkg_name}-%{version}
 chmod a-x examples/yaml-highlight/yaml_hl.py
+
+# Remove shebang from yaml_hl.py
+sed -i 's|#!/usr/bin/python||' examples/yaml-highlight/yaml_hl.py
+
 %patch0 -p1
 
 %build
@@ -64,6 +68,10 @@ rm -rf %{buildroot}
 %{python_sitearch}/*
 
 %changelog
+* Mon May 02 2016 Charalampos Stratakis <cstratak@redhat.com> - 3.10-14
+- Remove shebang from yaml_hl.py example file
+Resolves: rhbz#1329944
+
 * Fri Feb 12 2016 Robert Kuska <rkuska@redhat.com> - 3.10-13
 - Rebuilt for python27 rhscl
 
