@@ -3,8 +3,8 @@
 %global python3_pkgversion %{nil}
 
 Name:           %{?scl_prefix}PyYAML
-Version:        5.1.2
-Release:        7%{?dist}
+Version:        5.3.1
+Release:        1%{?dist}
 %global uversion %{version}
 Summary:        YAML parser and emitter for Python
 
@@ -89,6 +89,10 @@ set -ex
 
 
 %changelog
+* Thu Mar 26 2020 Lumír Balhar <lbalhar@redhat.com> - 5.3.1-1
+- Rebase to 5.3.1 to fix CVE-2020-1747
+Resolves: rhbz#1807367
+
 * Wed Feb 05 2020 Tomas Orsava <torsava@redhat.com> - 5.1.2-7
 - Import from the python38 module and modified for rh-python38 RHSCL
 - Resolves: rhbz#1671025
